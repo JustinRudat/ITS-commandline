@@ -20,7 +20,6 @@ import fr.lip6.move.gal.process.CommandLine;
 import fr.lip6.move.gal.process.Runner;
 import fr.lip6.move.gal.itstools.BinaryToolsPlugin.Tool;
 import fr.lip6.move.serialization.SerializationUtil;
-import fr.lip6.pnml.tapaal.application.Application;
 
 public class Application implements IApplication {
 	private static final String APPARGS = "application.args";
@@ -64,9 +63,8 @@ public class Application implements IApplication {
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
 			    // lancer avec noter appli, probleme dependance
-			    fr.lip6.pnml.tapaal.application.Application.start(context);
-			    doTapaal=true;
-			    return IApplication.EXIT_OK;
+			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
+			    
 			}
 //			} else if (LTSMINPATH.equals(args[i])) {
 //				ltsminpath = args[++i];

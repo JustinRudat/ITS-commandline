@@ -12,7 +12,7 @@ mac)
 	tmp="http://www.tapaal.net/fileadmin/download/tapaal-3.4/tapaal-3.4.0-mac64.dmg";
 	term=".dmg";;
 *)
-	echo "OS unknown"; exit 1;;	
+	echo "Specify the OS with win, mac or lin"; exit 1;;	
 esac
 
 subtmp=${tmp:52}

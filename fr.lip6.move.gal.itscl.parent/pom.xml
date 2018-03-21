@@ -348,6 +348,11 @@
 			<layout>p2</layout>
 			<url>https://lip6.github.io/ITSTools/</url>
 		</repository>
+		<repository>
+			<id>TAPAAL</id>
+			<layout>p2</layout>
+			<url>https://JustinRudat.github.io/ITS-contribution/</url>
+		</repository>
 
 		<repository>
 			<id>Eclipse current release</id>

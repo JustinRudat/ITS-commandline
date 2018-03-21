@@ -15,11 +15,12 @@ import fr.lip6.move.gal.Property;
 import fr.lip6.move.gal.SafetyProp;
 import fr.lip6.move.gal.Specification;
 import fr.lip6.move.gal.instantiate.GALRewriter;
-import fr.lip6.move.gal.itstools.CommandLine;
 import fr.lip6.move.gal.itstools.CommandLineBuilder;
-import fr.lip6.move.gal.itstools.Runner;
+import fr.lip6.move.gal.process.CommandLine;
+import fr.lip6.move.gal.process.Runner;
 import fr.lip6.move.gal.itstools.BinaryToolsPlugin.Tool;
 import fr.lip6.move.serialization.SerializationUtil;
+import fr.lip6.pnml.tapaal.application.Application;
 
 public class Application implements IApplication {
 	private static final String APPARGS = "application.args";
@@ -28,6 +29,7 @@ public class Application implements IApplication {
 	private static final String REACH_EXAM = "-reach";
 	private static final String CTL_EXAM = "-ctl";
 	private static final String LTL_EXAM = "-ltl";
+	private static final String TAPAAL_PATH = "-tapaalpath";
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
@@ -44,6 +46,7 @@ public class Application implements IApplication {
 		
 		Tool tool = Tool.reach;
 		boolean doIts = false;
+		boolean doTapaal = false;
 		
 		for (int i=0; i < args.length ; i++) {
 			if (INPUT_FILE.equals(args[i])) {
@@ -59,6 +62,12 @@ public class Application implements IApplication {
 			} else if (LTL_EXAM.equals(args[i])) {
 				tool = Tool.ltl;
 				doIts = true;
+			}else if( TAPAAL_PATH.equals(args[i])) {
+			    // lancer avec noter appli, probleme dependance
+			    fr.lip6.pnml.tapaal.application.Application.start(context);
+			    doTapaal=true;
+			    return IApplication.EXIT_OK;
+			}
 //			} else if (LTSMINPATH.equals(args[i])) {
 //				ltsminpath = args[++i];
 //				doLTSmin = true;
@@ -69,8 +78,7 @@ public class Application implements IApplication {
 //			} else if (ONLYGAL.equals(args[i])) {
 //				onlyGal = true;
 			}
-		}
-		
+				
 		if (inputff == null) {
 			System.err.println("Please provide input file with -i option");
 			return null;
@@ -134,7 +142,7 @@ public class Application implements IApplication {
 		}
 		System.out.println("Built GAL and proeprty files in "+ (time - System.currentTimeMillis()) + " ms.");
 		
-		Runner.runTool(3500, cl, System.out, true);
+		Runner.runTool(3500, cl);
 		
 		return IApplication.EXIT_OK;
 	}

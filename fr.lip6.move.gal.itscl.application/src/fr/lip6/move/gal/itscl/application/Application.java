@@ -62,7 +62,6 @@ public class Application implements IApplication {
 				tool = Tool.ltl;
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
-			    // lancer avec noter appli, probleme dependance
 			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
 			    
 			}

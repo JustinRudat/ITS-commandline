@@ -62,19 +62,9 @@ public class Application implements IApplication {
 				tool = Tool.ltl;
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
-			    // lancer avec noter appli, probleme dependance
 			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
-			    
 			}
-//			} else if (LTSMINPATH.equals(args[i])) {
-//				ltsminpath = args[++i];
-//				doLTSmin = true;
-//			} else if (ITS.equals(args[i])) {
-//				doITS = true;
-//			} else if (disablePOR.equals(args[i])) {
-//				doPOR = false;
-//			} else if (ONLYGAL.equals(args[i])) {
-//				onlyGal = true;
+
 			}
 				
 		if (inputff == null) {
@@ -138,7 +128,7 @@ public class Application implements IApplication {
 		if (cl != null) {
 			cl.setWorkingDir(new File(cwd));
 		}
-		System.out.println("Built GAL and proeprty files in "+ (time - System.currentTimeMillis()) + " ms.");
+		System.out.println("Built PNML and property files in "+ (time - System.currentTimeMillis()) + " ms.");
 		
 		Runner.runTool(3500, cl);
 		

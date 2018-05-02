@@ -1,5 +1,5 @@
 # ITS-commandline
-A project to host command-line version of ITS-Tools components embedded in eclipse
+A project to host command-line version of ITS-Tools components embedded in eclipse with the Tapaal integration inside !
 
 See download page : https://yanntm.github.io/ITS-commandline
 

@@ -29,6 +29,7 @@ public class Application implements IApplication {
 	private static final String CTL_EXAM = "-ctl";
 	private static final String LTL_EXAM = "-ltl";
 	private static final String TAPAAL_PATH = "-tapaalpath";
+	private static final String REDUCTION= "-red";
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
@@ -46,6 +47,8 @@ public class Application implements IApplication {
 		Tool tool = Tool.reach;
 		boolean doIts = false;
 		boolean doTapaal = false;
+		boolean doRed = false;
+		
 		
 		for (int i=0; i < args.length ; i++) {
 			if (INPUT_FILE.equals(args[i])) {
@@ -62,11 +65,19 @@ public class Application implements IApplication {
 				tool = Tool.ltl;
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
-			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
+			    doTapaal=true;
+			}else if(REDUCTION.equals(args[i])) {
+			    doRed=true;
 			}
 
-			}
-				
+		}
+		if(doTapaal) {
+		    if(doRed) {
+		        return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
+		    }else {
+		        return new fr.lip6.pnml.tapaal.application.Application().start(context);
+		    }
+		}		
 		if (inputff == null) {
 			System.err.println("Please provide input file with -i option");
 			return null;

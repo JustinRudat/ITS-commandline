@@ -66,18 +66,19 @@ public class Application implements IApplication {
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
 			    doTapaal=true;
+			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
 			}else if(REDUCTION.equals(args[i])) {
 			    doRed=true;
 			}
 
 		}
-		if(doTapaal) {
-		    if(doRed) {
-		        return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
-		    }else {
-		        return new fr.lip6.pnml.tapaal.application.Application().start(context);
-		    }
-		}		
+//		if(doTapaal) {
+//		    if(doRed) {
+//		        return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
+//		    }else {
+//		        return new fr.lip6.pnml.tapaal.application.Application().start(context);
+//		    }
+//		}		
 		if (inputff == null) {
 			System.err.println("Please provide input file with -i option");
 			return null;

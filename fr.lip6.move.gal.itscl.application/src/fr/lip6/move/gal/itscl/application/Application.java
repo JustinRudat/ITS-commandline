@@ -75,7 +75,7 @@ public class Application implements IApplication {
 		    if(doRed) {
 		        return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
 		    }else {
-		        return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
+		        return new fr.lip6.pnml.tapaal.application.Application().start(context);
 		    }
 		}		
 		if (inputff == null) {

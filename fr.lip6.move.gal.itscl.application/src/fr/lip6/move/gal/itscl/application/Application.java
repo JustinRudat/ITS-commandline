@@ -66,7 +66,7 @@ public class Application implements IApplication {
 				doIts = true;
 			}else if( TAPAAL_PATH.equals(args[i])) {
 			    doTapaal=true;
-			    return new fr.lip6.pnml.tapaal.application.ApplicationWithRed().start(context);
+			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
 			}else if(REDUCTION.equals(args[i])) {
 			    doRed=true;
 			}
@@ -95,7 +95,7 @@ public class Application implements IApplication {
 		
 		long time = System.currentTimeMillis();
 		Specification spec = SerializationUtil.fileToGalSystem(inputff);		
-		System.out.println("Successfully read input file : " + inputff +" in " + (time - System.currentTimeMillis()) + " ms.");
+		System.out.println("Successfully read input file : " + inputff +" in " + (System.currentTimeMillis()-time) + " ms.");
 		
 		String cwd = pwd + "/work";
 		File fcwd = new File(cwd);
@@ -107,7 +107,7 @@ public class Application implements IApplication {
 
 		time = System.currentTimeMillis();
 		GALRewriter.flatten(spec, true);
-		System.out.println("Simplifications done in " + (time - System.currentTimeMillis()) + " ms.");
+		System.out.println("Simplifications done in " + (System.currentTimeMillis()-time) + " ms.");
 		
 		time = System.currentTimeMillis();
 		String outpath = cwd+"/"+ modelName + ".gal";
@@ -140,7 +140,7 @@ public class Application implements IApplication {
 		if (cl != null) {
 			cl.setWorkingDir(new File(cwd));
 		}
-		System.out.println("Built PNML and property files in "+ (time - System.currentTimeMillis()) + " ms.");
+		System.out.println("Built PNML and property files in "+ (System.currentTimeMillis()-time) + " ms.");
 		
 		Runner.runTool(3500, cl);
 		

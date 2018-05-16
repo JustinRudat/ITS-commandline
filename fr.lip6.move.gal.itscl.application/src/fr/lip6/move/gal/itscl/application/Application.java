@@ -47,7 +47,7 @@ public class Application implements IApplication {
 		Tool tool = Tool.reach;
 		boolean doIts = false;
 		boolean doTapaal = false;
-		boolean doRed = false;
+		//boolean doRed = false;
 		
 		
 		for (int i=0; i < args.length ; i++) {
@@ -67,9 +67,10 @@ public class Application implements IApplication {
 			}else if( TAPAAL_PATH.equals(args[i])) {
 			    doTapaal=true;
 			    return new fr.lip6.pnml.tapaal.application.Application().start(context);
-			}else if(REDUCTION.equals(args[i])) {
-			    doRed=true;
 			}
+//			else if(REDUCTION.equals(args[i])) {
+//			    doRed=true;
+//			}
 
 		}
 		if (inputff == null) {
